@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import "../styles/fullPublication.css";
 import { useEffect, useState } from "react";
 import {
@@ -6,8 +8,10 @@ import {
 	fetchPublicationById,
 	createComment,
 	deleteComment,
+	editComment,
 } from "../ApiMethods";
 import { useParams } from "react-router-dom";
+import { Comment } from "./Comment";
 import Icon from "@mdi/react";
 import { mdiCog } from "@mdi/js";
 
@@ -48,23 +52,8 @@ export const FullPublication = () => {
 		await loadPublication();
 	}
 
-	async function handleEditComment(commentId) {
-		/*
-		falta armar el editor del comentario!!
-		 await editComment(commentId, {
-			user: user,
-			content: content,
-		}); */
-	}
-
-	async function handleDeleteComment(commentId) {
-		await deleteComment(commentId);
-		await loadPublication();
-	}
-
 	useEffect(() => {
 		loadPublication();
-		console.log(id);
 	}, []);
 
 	return (
@@ -213,25 +202,41 @@ export const FullPublication = () => {
 
 							<div>
 								<h5>Comentarios</h5>
+								{publication &&
+									publication.comments &&
+									publication.comments.map((com, i) => (
+										<Comment
+											i={i}
+											key={com._id}
+											pub={publication}
+											com={com}
+											user={user}
+											content={content}
+											setContent={setContent}
+											loadPublication={loadPublication}
+										/>
+									))}
 							</div>
-							<input
-								className="form-control"
-								type="text"
-								placeholder="agregar un comentario"
-								onClick={() => setShowSend(!showSend)}
-								defaultValue={content}
-								onChange={(e) => setContent(e.target.value)}
-							/>
-							{showSend && (
-								<button
-									className="btn-sm btn"
-									onClick={() =>
-										handleSendComment(publication._id)
-									}
-								>
-									Enviar
-								</button>
-							)}
+							<div className="comment-box-send">
+								<input
+									className="form-control comment-send"
+									type="text"
+									placeholder="agregar un comentario"
+									onClick={() => setShowSend(!showSend)}
+									defaultValue={""}
+									onChange={(e) => setContent(e.target.value)}
+								/>
+								{showSend && (
+									<button
+										className="btn-sm btn btn-comment-send"
+										onClick={() =>
+											handleSendComment(publication._id)
+										}
+									>
+										Enviar
+									</button>
+								)}
+							</div>
 						</div>
 					</div>
 				)}

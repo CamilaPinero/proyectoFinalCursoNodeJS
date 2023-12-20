@@ -1,0 +1,15 @@
+.comment-box {
+	display: inline-flex;
+	border: var(--bs-border-width) solid var(--bs-border-color);
+	border-radius: var(--bs-border-radius);
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#comment-edit {
+	border: none;
+}
+
+.btn-comment-edit {
+	margin-bottom: 0;
+	padding-right: 12px;
+}
