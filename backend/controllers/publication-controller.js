@@ -45,27 +45,9 @@ const editPublication = async (req, res) => {
 const deletePublication = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const publication = await Publication.findByIdAndDelete(id, req.body);
+		const publication = await Publication.findByIdAndDelete(id);
 		if (!publication) {
 			return res.json({ message: "no se encontró la publicación" });
-		}
-		return res.json();
-	} catch (error) {
-		console.error(error);
-	}
-};
-
-const createComment = async (req, res) => {
-	try {
-		const { id } = req.params;
-
-		const publication = await Publication.findOneAndUpdate(
-			{ _id: id },
-			{ $push: { comments: req.body } }
-		);
-
-		if (!publication) {
-			return res.json({ message: "no se encontró el comentario" });
 		}
 		return res.json();
 	} catch (error) {
@@ -79,5 +61,4 @@ export {
 	getPublicationById,
 	editPublication,
 	deletePublication,
-	createComment,
 };

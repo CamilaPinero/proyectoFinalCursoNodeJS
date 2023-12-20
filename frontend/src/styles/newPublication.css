@@ -1,0 +1,13 @@
+.new-publication-form {
+	align-self: center;
+	justify-self: center;
+	width: 60%;
+}
+
+.card-header {
+	text-align: center;
+}
+
+.btn-crear {
+	margin: auto;
+}

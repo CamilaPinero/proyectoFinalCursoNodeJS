@@ -1,0 +1,9 @@
+.header {
+	grid-column: 1 / 4;
+	grid-row: 1 / 2;
+	display: flex;
+	background-color: #747bff;
+	justify-content: center;
+	align-items: center;
+	color: #f8f8f8;
+}

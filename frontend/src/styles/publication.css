@@ -1,0 +1,92 @@
+.card {
+	height: fit-content;
+	width: 450px;
+}
+
+.card-header {
+	display: inline-flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 10px;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.card-text {
+	height: 30px;
+	overflow: hidden;
+}
+
+.publication {
+	justify-self: center;
+	max-width: 400px;
+	align-items: center;
+}
+
+.comment {
+	gap: 0px;
+	padding-bottom: 0;
+}
+
+.comment-header {
+	align-items: center;
+	gap: 5px;
+}
+
+.rounded-circle {
+	width: 30px;
+	height: 30px;
+}
+
+.dropdown-menu {
+	min-width: fit-content;
+	padding: 5px 0 5px 0;
+}
+
+.dropdown {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dropdown-option {
+	background-color: #ffff;
+
+	border-radius: 0;
+	padding: 0 5px 0 5px;
+	width: 100%;
+	text-align: start;
+}
+
+.dropdown-option:hover {
+	background-color: #646cff;
+	color: #ffff;
+}
+
+.buttons {
+	display: inline-flex;
+	justify-content: center;
+	gap: 10px;
+	align-items: center;
+}
+
+.setting-publication {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+form {
+	width: 100%;
+}
+
+img {
+	max-height: 190px;
+	min-width: 300px;
+	object-fit: cover;
+	object-position: 25% 25%;
+}
