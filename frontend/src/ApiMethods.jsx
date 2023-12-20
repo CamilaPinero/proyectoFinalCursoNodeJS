@@ -19,6 +19,26 @@ export async function fetchPublications() {
 	}
 }
 
+export async function fetchPublicationById(publicationId) {
+	try {
+		const response = await fetch(
+			`${import.meta.env.VITE_BACKEND_URL}/publications/${publicationId}`,
+			{
+				method: "GET",
+			}
+		);
+
+		if (!response.ok) {
+			throw new Error("error");
+		}
+
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 export async function createPublication(publication) {
 	try {
 		const response = await fetch(

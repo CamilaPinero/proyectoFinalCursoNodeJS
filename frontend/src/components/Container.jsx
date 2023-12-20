@@ -1,6 +1,6 @@
 import "../styles/container.css";
 import { useEffect, useState } from "react";
-import { Publication } from "./Publication";
+import { PublicationCard } from "./PublicationCard";
 import { useNavigate } from "react-router-dom";
 import { fetchPublications } from "../ApiMethods";
 
@@ -21,7 +21,7 @@ export const Container = () => {
 		<div className="container">
 			<div className="row row-cols-3">
 				{publications.map((pub) => (
-					<Publication
+					<PublicationCard
 						key={pub._id}
 						pub={pub}
 						loadPublications={loadPublications}

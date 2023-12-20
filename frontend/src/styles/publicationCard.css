@@ -1,6 +1,6 @@
 .card {
 	height: fit-content;
-	width: 450px;
+	width: 400px;
 }
 
 .card-header {
@@ -18,8 +18,10 @@
 }
 
 .card-text {
-	height: 30px;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 0;
 }
 
 .publication {

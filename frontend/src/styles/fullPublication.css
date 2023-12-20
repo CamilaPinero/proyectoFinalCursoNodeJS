@@ -1,0 +1,12 @@
+.full-publication {
+	width: fit-content !important;
+	min-width: 60%;
+}
+
+.card-img-full {
+	object-fit: contain;
+}
+
+#description {
+	height: 150px;
+}

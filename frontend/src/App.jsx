@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { Menu } from "./components/Menu";
 import { Container } from "./components/Container";
 import { NewPublication } from "./components/NewPublication";
+import { FullPublication } from "./components/FullPublication";
 
 function App() {
 	return (
@@ -16,6 +17,10 @@ function App() {
 					<Route
 						path="/create-new-publication"
 						element={<NewPublication />}
+					></Route>
+					<Route
+						path="/publication/:id"
+						element={<FullPublication />}
 					></Route>
 				</Routes>
 				<Footer />
