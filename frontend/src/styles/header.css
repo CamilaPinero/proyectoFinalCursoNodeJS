@@ -1,9 +1,41 @@
 .header {
-	grid-column: 1 / 4;
-	grid-row: 1 / 2;
-	display: flex;
+	position: sticky;
 	background-color: #747bff;
-	justify-content: center;
-	align-items: center;
 	color: #f8f8f8;
+	padding: 8px;
+	user-select: none;
+}
+.menuList {
+	list-style: none;
+	text-align: start;
+	display: flex;
+	justify-content: flex-start;
+
+	background-color: #747bff;
+}
+
+.nav-item {
+	padding: 5px;
+	border-radius: 2px;
+}
+
+.nav-item:hover {
+	background-color: #f8f8f8;
+	color: #646cff;
+}
+
+.navbar-toggler {
+	border: none;
+	font-size: 0.8rem;
+	color: #f8f8f8;
+	padding: 4px 6px;
+}
+
+.navbar-toggler:focus {
+	box-shadow: none;
+	color: #535bf2;
+}
+
+.container-fluid {
+	padding: 0 12px;
 }

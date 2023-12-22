@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-//mover nav bar al header
-//mover comentarios a un componente aparte, terminar el editar comentario
+//arreglar card width no responsive
+//que no se puedan agregar publicaciones o comentarios vacios
 //agregar fechas de creacion de publicacion y comentarios, componentes para otras paginas del menu (en configuracion podria ir tema)
 
 import "../styles/publicationCard.css";

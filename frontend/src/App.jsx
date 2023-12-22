@@ -1,7 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { Menu } from "./components/Menu";
+
 import { Container } from "./components/Container";
 import { NewPublication } from "./components/NewPublication";
 import { FullPublication } from "./components/FullPublication";
@@ -11,7 +11,7 @@ function App() {
 		<>
 			<Router>
 				<Header />
-				<Menu />
+
 				<Routes>
 					<Route path="/" element={<Container />}></Route>
 					<Route
