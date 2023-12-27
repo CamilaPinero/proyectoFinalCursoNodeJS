@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-//arreglar card width no responsive
-//que no se puedan agregar publicaciones o comentarios vacios
-//agregar fechas de creacion de publicacion y comentarios, componentes para otras paginas del menu (en configuracion podria ir tema)
+//agregar componentes para otras paginas del menu (en configuracion podria ir tema)
+//no anda el boton config de full publication
+//agregar toasts y spinner de carga
 
 import "../styles/publicationCard.css";
 import { useNavigate } from "react-router-dom";

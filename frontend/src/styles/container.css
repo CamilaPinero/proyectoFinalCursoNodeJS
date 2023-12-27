@@ -16,3 +16,10 @@
 	justify-content: center;
 	gap: 10px;
 }
+
+/* @media (max-width: 1250px) {
+	.row-cols-3 > * {
+		flex: 0 0 auto;
+		width: 33%;
+	}
+} */

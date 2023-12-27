@@ -77,7 +77,9 @@ export const Comment = (props) => {
 						/>
 						<div className=" mb-1 ">
 							<div className="d-flex comment-header">
-								<h6>{props.com.user}</h6>
+								<h6 className="commentUser">
+									{props.com.user}
+								</h6>
 								<button
 									className="btn btn-sm"
 									onClick={() => setShowEditComment(true)}

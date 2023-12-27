@@ -1,9 +1,11 @@
 .card {
 	height: fit-content;
-	width: 400px;
+	min-width: 200px;
+	max-width: 400px;
 }
 
 .card-header {
+	text-align: start !important;
 	display: inline-flex;
 	justify-content: space-between;
 	width: 100%;
@@ -38,11 +40,6 @@
 .comment-header {
 	align-items: center;
 	gap: 5px;
-}
-
-.rounded-circle {
-	width: 30px;
-	height: 30px;
 }
 
 .dropdown-menu {
@@ -89,7 +86,14 @@ form {
 
 .card-img {
 	max-height: 190px;
-	min-width: 300px;
+
 	object-fit: cover;
 	object-position: 25% 25%;
+}
+
+@media (max-width: 450px) {
+	a,
+	.btn {
+		font-size: 0.8rem;
+	}
 }

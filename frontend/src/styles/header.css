@@ -16,7 +16,7 @@
 
 .nav-item {
 	padding: 5px;
-	border-radius: 2px;
+	border-radius: 1px;
 }
 
 .nav-item:hover {
@@ -38,4 +38,15 @@
 
 .container-fluid {
 	padding: 0 12px;
+}
+
+@media (max-width: 450px) {
+	.header {
+		font-size: 0.9rem;
+	}
+
+	h2 {
+		font-size: 1.1rem;
+		margin-bottom: 0;
+	}
 }

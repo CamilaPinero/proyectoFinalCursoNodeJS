@@ -10,13 +10,17 @@ export const NewPublication = () => {
 	const [imageUrl, setImageUrl] = useState("");
 
 	async function handleSubmit(e) {
-		e.preventDefault();
-		await createPublication({
-			title: title,
-			description: description,
-			image: imageUrl,
-		});
-		navigate("/");
+		if (title === "" || description === "") {
+			return;
+		} else {
+			e.preventDefault();
+			await createPublication({
+				title: title,
+				description: description,
+				image: imageUrl,
+			});
+			navigate("/");
+		}
 	}
 
 	return (

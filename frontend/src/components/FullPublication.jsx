@@ -44,12 +44,16 @@ export const FullPublication = () => {
 	}
 
 	async function handleSendComment() {
-		await createComment(id, {
-			user: user,
-			content: content,
-		});
-		setContent("");
-		await loadPublication();
+		if (content === "") {
+			return;
+		} else {
+			await createComment(id, {
+				user: user,
+				content: content,
+			});
+			setContent("");
+			await loadPublication();
+		}
 	}
 
 	useEffect(() => {
