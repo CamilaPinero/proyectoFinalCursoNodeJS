@@ -13,7 +13,7 @@ export const getComment = async (req, res) => {
 //no funciona
 export const editComment = async (req, res) => {
 	const commentId = req.params.id;
-	//req.body._id = commentId;
+
 	try {
 		const publication = await Publication.findOneAndUpdate(
 			{

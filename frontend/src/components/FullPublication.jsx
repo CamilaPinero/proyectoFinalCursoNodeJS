@@ -7,13 +7,12 @@ import {
 	editPublication,
 	fetchPublicationById,
 	createComment,
-	deleteComment,
-	editComment,
 } from "../ApiMethods";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Comment } from "./Comment";
 import Icon from "@mdi/react";
 import { mdiCog } from "@mdi/js";
+import toast, { Toaster } from "react-hot-toast";
 
 export const FullPublication = () => {
 	const [user, setUser] = useState("userDePrueba");
@@ -22,16 +21,16 @@ export const FullPublication = () => {
 	const [showEditPublication, setShowEditPublication] = useState(false);
 	const [publication, setPublication] = useState({});
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	async function loadPublication() {
 		const data = await fetchPublicationById(id);
-
 		setPublication(data);
 	}
 
 	async function handleDeletePublication(id) {
 		await deletePublication(id);
-		await loadPublication();
+		navigate("/");
 	}
 
 	async function handleEditPublication(e, id) {
@@ -41,6 +40,7 @@ export const FullPublication = () => {
 		await editPublication(id, formProps);
 		await loadPublication();
 		setShowEditPublication(false);
+		toast.success("Publicación actualizada!");
 	}
 
 	async function handleSendComment() {
@@ -87,8 +87,7 @@ export const FullPublication = () => {
 										className="btn dropdown-toggle btn-sm setting-publication"
 										type="button"
 										id="dropdownMenuButton"
-										data-toggle="dropdown"
-										aria-haspopup="true"
+										data-bs-toggle="dropdown"
 										aria-expanded="false"
 									>
 										<Icon
@@ -161,8 +160,7 @@ export const FullPublication = () => {
 									className="btn dropdown-toggle btn-sm setting-publication"
 									type="button"
 									id="dropdownMenuButton"
-									data-toggle="dropdown"
-									aria-haspopup="true"
+									data-bs-toggle="dropdown"
 									aria-expanded="false"
 								>
 									<Icon
@@ -227,7 +225,7 @@ export const FullPublication = () => {
 									type="text"
 									placeholder="agregar un comentario"
 									onClick={() => setShowSend(!showSend)}
-									defaultValue={""}
+									value={content}
 									onChange={(e) => setContent(e.target.value)}
 								/>
 								{showSend && (
@@ -245,6 +243,7 @@ export const FullPublication = () => {
 					</div>
 				)}
 			</div>
+			<Toaster />
 		</>
 	);
 };

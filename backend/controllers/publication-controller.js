@@ -55,10 +55,29 @@ const deletePublication = async (req, res) => {
 	}
 };
 
+const getPublicationsByKeyWord = async (req, res) => {
+	try {
+		const { keyWord } = req.params;
+		const regex = new RegExp(keyWord, "gi");
+		const publications = await Publication.find({
+			title: regex,
+		});
+
+		if (!publications) {
+			return res.json({ message: "no se encontró la publicación" });
+		}
+		res.json(publications);
+		return publications;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 export {
 	createPublication,
 	getAllPublications,
 	getPublicationById,
 	editPublication,
 	deletePublication,
+	getPublicationsByKeyWord,
 };

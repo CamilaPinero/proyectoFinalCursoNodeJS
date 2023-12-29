@@ -36,8 +36,25 @@
 	color: #535bf2;
 }
 
+.navbar-nav {
+	justify-content: flex-start;
+	width: 100%;
+}
+
 .container-fluid {
 	padding: 0 12px;
+}
+
+.btn-search {
+	background-color: #f8f8f8 !important;
+	padding: 4 8 !important;
+	margin-bottom: 0 !important;
+}
+
+@media (min-width: 990px) {
+	.search-form {
+		margin-left: auto !important;
+	}
 }
 
 @media (max-width: 450px) {

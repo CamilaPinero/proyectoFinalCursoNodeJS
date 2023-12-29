@@ -2,6 +2,7 @@ import "../styles/newPublication.css";
 import { useState } from "react";
 import { createPublication } from "../ApiMethods";
 import { useNavigate } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
 
 export const NewPublication = () => {
 	const navigate = useNavigate();
@@ -10,7 +11,11 @@ export const NewPublication = () => {
 	const [imageUrl, setImageUrl] = useState("");
 
 	async function handleSubmit(e) {
+		e.preventDefault();
 		if (title === "" || description === "") {
+			toast.error("Ingrese el título y descripción de la publicación", {
+				duration: 4000,
+			});
 			return;
 		} else {
 			e.preventDefault();
@@ -19,7 +24,12 @@ export const NewPublication = () => {
 				description: description,
 				image: imageUrl,
 			});
-			navigate("/");
+
+			toast.success(
+				<div>
+					Publicación creada! <a href="/">Volver al inicio</a>
+				</div>
+			);
 		}
 	}
 
@@ -70,6 +80,7 @@ export const NewPublication = () => {
 					Crear publicación
 				</button>
 			</form>
+			<Toaster />
 		</div>
 	);
 };

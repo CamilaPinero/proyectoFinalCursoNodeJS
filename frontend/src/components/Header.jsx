@@ -1,8 +1,9 @@
 import "../styles/header.css";
 import Icon from "@mdi/react";
-import { mdiMenu } from "@mdi/js";
+import { mdiMenu, mdiMagnify } from "@mdi/js";
 
 import { useNavigate } from "react-router-dom";
+import { fetchPublicationByKeyWord } from "../ApiMethods";
 
 export const Header = () => {
 	const navigate = useNavigate();
@@ -11,6 +12,11 @@ export const Header = () => {
 		{ title: "Crear publicación", route: "/create-new-publication" },
 		{ title: "Configuración", route: "/" },
 	];
+
+	async function handleSearch(e) {
+		e.preventDefault();
+		await fetchPublicationByKeyWord(e.target.search.value);
+	}
 
 	return (
 		<nav className=" header navbar navbar-expand-lg">
@@ -44,6 +50,30 @@ export const Header = () => {
 								{option.title}
 							</div>
 						))}
+						<div
+							className="search-form"
+							style={{ marginLeft: "10px" }}
+						>
+							<form
+								className="d-flex"
+								role="search"
+								onSubmit={(e) => handleSearch(e)}
+							>
+								<input
+									className="form-control me-2"
+									type="search"
+									placeholder="Buscar"
+									aria-label="Search"
+									id="search"
+								></input>
+								<button
+									className="btn btn-sm btn-search"
+									type="submit"
+								>
+									<Icon path={mdiMagnify} size={1} />
+								</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

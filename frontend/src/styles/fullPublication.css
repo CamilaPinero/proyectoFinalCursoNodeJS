@@ -33,6 +33,10 @@
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.btn.show {
+	border: none;
+}
+
 @media (max-width: 450px) {
 	h5 {
 		font-size: 0.9rem;

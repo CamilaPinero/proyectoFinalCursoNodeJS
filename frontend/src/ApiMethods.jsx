@@ -111,6 +111,28 @@ export async function deletePublication(id) {
 	}
 }
 
+export async function fetchPublicationByKeyWord(keyWord) {
+	try {
+		const response = await fetch(
+			`${
+				import.meta.env.VITE_BACKEND_URL
+			}/publications/search/${keyWord}`,
+			{
+				method: "GET",
+			}
+		);
+
+		if (!response.ok) {
+			throw new Error("error");
+		}
+
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 //Comments
 export async function createComment(publicationId, comment) {
 	try {

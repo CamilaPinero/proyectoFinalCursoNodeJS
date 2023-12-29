@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 
-//agregar componentes para otras paginas del menu (en configuracion podria ir tema)
-//no anda el boton config de full publication
-//agregar toasts y spinner de carga
+//Agregar ventana de resultados de busqueda, ya quedó andando el buscador y el backend
+// arreglar textarea de nueva publicacion
 
 import "../styles/publicationCard.css";
 import { useNavigate } from "react-router-dom";
