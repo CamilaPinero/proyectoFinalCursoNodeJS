@@ -1,11 +1,10 @@
 import "../styles/newPublication.css";
 import { useState } from "react";
 import { createPublication } from "../ApiMethods";
-import { useNavigate } from "react-router-dom";
+
 import { toast, Toaster } from "react-hot-toast";
 
 export const NewPublication = () => {
-	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
@@ -58,12 +57,14 @@ export const NewPublication = () => {
 					<label htmlFor="description" className="form-label">
 						Descripción
 					</label>
-					<input
+					<textarea
 						type="text"
 						className="form-control"
+						cols="50"
+						rows="10"
 						id="description"
 						onChange={(e) => setDescription(e.target.value)}
-					></input>
+					></textarea>
 				</div>
 				<div className="mb-3">
 					<label className="form-label" htmlFor="image-url">

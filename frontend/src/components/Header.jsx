@@ -1,29 +1,54 @@
 import "../styles/header.css";
 import Icon from "@mdi/react";
-import { mdiMenu, mdiMagnify } from "@mdi/js";
+import logo from "../assets/logo.png";
+import { mdiMenu, mdiMagnify, mdiClose } from "@mdi/js";
 
 import { useNavigate } from "react-router-dom";
 import { fetchPublicationByKeyWord } from "../ApiMethods";
+import { useContext, useEffect, useState } from "react";
+import { PublicationsContext } from "./PublicationsContext";
 
 export const Header = () => {
 	const navigate = useNavigate();
+	const [search, setSearch] = useState("");
+	const publicationsContext = useContext(PublicationsContext);
 	const options = [
 		{ title: "Inicio", route: "/" },
 		{ title: "Crear publicación", route: "/create-new-publication" },
-		{ title: "Configuración", route: "/" },
 	];
 
-	async function handleSearch(e) {
+	async function handleSearch(e, keyWord) {
 		e.preventDefault();
-		await fetchPublicationByKeyWord(e.target.search.value);
+
+		const payload = await fetchPublicationByKeyWord(keyWord);
+
+		publicationsContext.dispatch({
+			type: "setPublications",
+			payload,
+		});
 	}
 
+	function resetPublications() {
+		setSearch("");
+		publicationsContext.dispatch({
+			type: "setPublications",
+			payload: null,
+		});
+	}
+
+	useEffect(() => {
+		if (!search) resetPublications();
+	}, [search]);
 	return (
 		<nav className=" header navbar navbar-expand-lg">
 			<div className="container-fluid">
-				<div className="icon" onClick={() => navigate("/")}>
-					<h2>Catinstagram</h2>
-				</div>
+				<img
+					src={logo}
+					alt="catinstagram"
+					className="logo"
+					onClick={() => navigate("/")}
+				/>
+
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -55,17 +80,32 @@ export const Header = () => {
 							style={{ marginLeft: "10px" }}
 						>
 							<form
-								className="d-flex"
+								className="d-flex gap-2"
 								role="search"
-								onSubmit={(e) => handleSearch(e)}
+								onSubmit={(e) =>
+									handleSearch(e, e.target.search.value)
+								}
 							>
 								<input
 									className="form-control me-2"
-									type="search"
 									placeholder="Buscar"
 									aria-label="Search"
 									id="search"
+									value={search}
+									onChange={(e) => setSearch(e.target.value)}
+									onKeyDown={(e) =>
+										e.key === "Enter" &&
+										handleSearch(e, e.target.value)
+									}
 								></input>
+								{search && (
+									<button
+										className="btn btn-sm btn-search resetSearch"
+										onClick={resetPublications}
+									>
+										<Icon path={mdiClose} size={1} />
+									</button>
+								)}
 								<button
 									className="btn btn-sm btn-search"
 									type="submit"

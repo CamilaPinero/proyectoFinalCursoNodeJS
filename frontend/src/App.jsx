@@ -1,14 +1,26 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-
 import { Container } from "./components/Container";
 import { NewPublication } from "./components/NewPublication";
 import { FullPublication } from "./components/FullPublication";
+import { useReducer } from "react";
+import { PublicationsReducer } from "./components/PublicationsReducer";
+import {
+	PublicationsContext,
+	initialState,
+} from "./components/PublicationsContext";
 
 function App() {
+	const [data, dispatch] = useReducer(PublicationsReducer, initialState);
+
 	return (
-		<>
+		<PublicationsContext.Provider
+			value={{
+				state: data,
+				dispatch,
+			}}
+		>
 			<Router>
 				<Header />
 
@@ -25,7 +37,7 @@ function App() {
 				</Routes>
 				<Footer />
 			</Router>
-		</>
+		</PublicationsContext.Provider>
 	);
 }
 

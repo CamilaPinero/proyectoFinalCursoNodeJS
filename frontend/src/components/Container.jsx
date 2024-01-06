@@ -1,12 +1,14 @@
 import "../styles/container.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PublicationCard } from "./PublicationCard";
 import { useNavigate } from "react-router-dom";
 import { fetchPublications } from "../ApiMethods";
+import { PublicationsContext } from "./PublicationsContext";
 
 export const Container = () => {
 	const navigate = useNavigate();
 	const [publications, setPublications] = useState([]);
+	const publicationsContext = useContext(PublicationsContext);
 
 	const loadPublications = async () => {
 		const data = await fetchPublications();
@@ -16,6 +18,14 @@ export const Container = () => {
 	useEffect(() => {
 		loadPublications();
 	}, []);
+
+	useEffect(() => {
+		if (!publicationsContext.state.publications) {
+			loadPublications();
+		} else {
+			setPublications(publicationsContext.state.publications);
+		}
+	}, [publicationsContext.state.publications]);
 
 	return (
 		<div className="container">

@@ -1,8 +1,5 @@
 /* eslint-disable react/prop-types */
 
-//Agregar ventana de resultados de busqueda, ya quedó andando el buscador y el backend
-// arreglar textarea de nueva publicacion
-
 import "../styles/publicationCard.css";
 import { useNavigate } from "react-router-dom";
 

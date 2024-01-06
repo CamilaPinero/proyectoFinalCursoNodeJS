@@ -5,6 +5,11 @@
 	padding: 8px;
 	user-select: none;
 }
+
+.logo {
+	max-width: 20%;
+}
+
 .menuList {
 	list-style: none;
 	text-align: start;
@@ -47,8 +52,14 @@
 
 .btn-search {
 	background-color: #f8f8f8 !important;
-	padding: 4 8 !important;
+	padding: 4px 8px !important;
 	margin-bottom: 0 !important;
+}
+
+.resetSearch {
+	background-color: transparent !important;
+	color: #f8f8f8 !important;
+	padding: 2px 4px !important;
 }
 
 @media (min-width: 990px) {
