@@ -30,25 +30,32 @@ export const Container = () => {
 	return (
 		<div className="container">
 			<div className="row row-cols-3">
-				{publications.map((pub) => (
-					<PublicationCard
-						key={pub._id}
-						pub={pub}
-						loadPublications={loadPublications}
-					/>
-				))}
-				<div className="card text-center new-publication-card">
-					<div className="card-body">
-						<h5 className="card-title">Crear nueva publicación</h5>
+				{publications &&
+					publications.map((pub) => (
+						<PublicationCard
+							key={pub._id}
+							pub={pub}
+							loadPublications={loadPublications}
+						/>
+					))}
+				{!publicationsContext.state.publications && (
+					<div className="card text-center new-publication-card">
+						<div className="card-body">
+							<h5 className="card-title">
+								Crear nueva publicación
+							</h5>
 
-						<button
-							onClick={() => navigate("/create-new-publication")}
-							className="btn btn-primary"
-						>
-							Ir a crear
-						</button>
+							<button
+								onClick={() =>
+									navigate("/create-new-publication")
+								}
+								className="btn btn-primary"
+							>
+								Ir a crear
+							</button>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);

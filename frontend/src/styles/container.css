@@ -17,9 +17,12 @@
 	gap: 10px;
 }
 
-/* @media (max-width: 1250px) {
-	.row-cols-3 > * {
-		flex: 0 0 auto;
-		width: 33%;
+@media (max-width: 450px) {
+	.container {
+		padding: 2em 0;
 	}
-} */
+
+	.row-cols-3 > * {
+		width: 80%;
+	}
+}

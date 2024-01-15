@@ -69,19 +69,19 @@ export const Comment = (props) => {
 						</div>
 					</div>
 				) : (
-					<div className="d-flex flex-start">
-						<img
-							className="rounded-circle shadow-1-strong me-3"
-							src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-							alt="avatar"
-						/>
+					<div className="d-flex">
 						<div className=" mb-1 ">
 							<div className="d-flex comment-header">
+								<img
+									className="rounded-circle shadow-1-strong me-3"
+									src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+									alt="avatar"
+								/>
 								<h6 className="commentUser">
 									{props.com.user}
 								</h6>
 								<button
-									className="btn btn-sm"
+									className="btn btn-sm edit"
 									onClick={() => setShowEditComment(true)}
 								>
 									editar

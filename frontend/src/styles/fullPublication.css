@@ -6,6 +6,7 @@
 
 .card-img-full {
 	object-fit: contain;
+	border-radius: 4px;
 }
 
 #description {
@@ -39,10 +40,10 @@
 
 @media (max-width: 450px) {
 	h5 {
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 
 	p {
-		font-size: 0.8rem;
+		font-size: 1rem;
 	}
 }

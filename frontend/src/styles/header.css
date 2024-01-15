@@ -1,5 +1,4 @@
 .header {
-	position: sticky;
 	background-color: #747bff;
 	color: #f8f8f8;
 	padding: 8px;
@@ -22,6 +21,7 @@
 .nav-item {
 	padding: 5px;
 	border-radius: 1px;
+	font-size: 1.25rem;
 }
 
 .nav-item:hover {
@@ -76,5 +76,9 @@
 	h2 {
 		font-size: 1.1rem;
 		margin-bottom: 0;
+	}
+
+	.logo {
+		max-width: 50%;
 	}
 }

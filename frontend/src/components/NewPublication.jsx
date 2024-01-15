@@ -47,6 +47,9 @@ export const NewPublication = () => {
 						className="form-control"
 						id="title"
 						aria-describedby="title"
+						data-toggle="tooltip"
+						data-placement="right"
+						title="Elegí un título para tu publicación sobre gatos"
 						onChange={(e) => setTitle(e.target.value)}
 					></input>
 					<div id="titleHelp" className="form-text">
@@ -63,6 +66,9 @@ export const NewPublication = () => {
 						cols="50"
 						rows="10"
 						id="description"
+						data-toggle="tooltip"
+						data-placement="right"
+						title="Escribí una descripción para tu publicación sobre gatos"
 						onChange={(e) => setDescription(e.target.value)}
 					></textarea>
 				</div>
@@ -75,6 +81,9 @@ export const NewPublication = () => {
 						className="form-control"
 						id="image-url"
 						onChange={(e) => setImageUrl(e.target.value)}
+						data-toggle="tooltip"
+						data-placement="right"
+						title='Buscá "gatos" en google, abrí la imagen que te guste, copiá el link de la imagen y pegalo acá'
 					></input>
 				</div>
 				<button type="submit" className="btn btn-primary btn-crear">
