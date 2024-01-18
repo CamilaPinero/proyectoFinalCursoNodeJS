@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { PublicationCard } from "./PublicationCard";
 import { useNavigate } from "react-router-dom";
 import { fetchPublications } from "../ApiMethods";
-import { PublicationsContext } from "./PublicationsContext";
+import { AppContext } from "./AppContext";
 
 export const Container = () => {
 	const navigate = useNavigate();
 	const [publications, setPublications] = useState([]);
-	const publicationsContext = useContext(PublicationsContext);
+	const appContext = useContext(AppContext);
 
 	const loadPublications = async () => {
 		const data = await fetchPublications();
@@ -20,12 +20,12 @@ export const Container = () => {
 	}, []);
 
 	useEffect(() => {
-		if (!publicationsContext.state.publications) {
+		if (!appContext.state.publications) {
 			loadPublications();
 		} else {
-			setPublications(publicationsContext.state.publications);
+			setPublications(appContext.state.publications);
 		}
-	}, [publicationsContext.state.publications]);
+	}, [appContext.state.publications]);
 
 	return (
 		<div className="container">
@@ -38,7 +38,7 @@ export const Container = () => {
 							loadPublications={loadPublications}
 						/>
 					))}
-				{!publicationsContext.state.publications && (
+				{!appContext.state.publications && (
 					<div className="card text-center new-publication-card">
 						<div className="card-body">
 							<h5 className="card-title">

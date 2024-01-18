@@ -6,12 +6,12 @@ import { mdiMenu, mdiMagnify, mdiClose } from "@mdi/js";
 import { useNavigate } from "react-router-dom";
 import { fetchPublicationByKeyWord } from "../ApiMethods";
 import { useContext, useEffect, useState } from "react";
-import { PublicationsContext } from "./PublicationsContext";
+import { AppContext } from "./AppContext";
 
 export const Header = () => {
 	const navigate = useNavigate();
 	const [search, setSearch] = useState("");
-	const publicationsContext = useContext(PublicationsContext);
+	const appContext = useContext(AppContext);
 	const options = [
 		{ title: "Inicio", route: "/" },
 		{ title: "Crear publicación", route: "/create-new-publication" },
@@ -22,7 +22,7 @@ export const Header = () => {
 
 		const payload = await fetchPublicationByKeyWord(keyWord);
 
-		publicationsContext.dispatch({
+		appContext.dispatch({
 			type: "setPublications",
 			payload,
 		});
@@ -30,7 +30,7 @@ export const Header = () => {
 
 	function resetPublications() {
 		setSearch("");
-		publicationsContext.dispatch({
+		appContext.dispatch({
 			type: "setPublications",
 			payload: null,
 		});
@@ -39,6 +39,7 @@ export const Header = () => {
 	useEffect(() => {
 		if (!search) resetPublications();
 	}, [search]);
+
 	return (
 		<nav className=" header navbar navbar-expand-lg">
 			<div className="container-fluid">

@@ -1,0 +1,91 @@
+.card-sign-in {
+	align-self: center;
+	height: fit-content;
+	width: 40vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.logo {
+	max-width: 80% !important;
+}
+
+.sign-in-image {
+	background-image: url(https://image.petmd.com/files/styles/978x550/public/2021-12/cat.jealous.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+	gap: 10px;
+	color: #f1f1f1;
+	padding: 40px;
+}
+
+.container-sign-in {
+	padding: 0;
+	background-color: #646cff;
+	background: linear-gradient(90deg, #888efe 60%, #646cff 100%);
+	display: flex;
+	justify-content: start;
+	gap: 0;
+}
+
+.header-sign-in {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	color: #f1f1f1;
+	width: 80%;
+}
+
+.body-sign-in {
+	color: #f1f1f1;
+	width: 80%;
+}
+
+h3 {
+	margin-bottom: 0;
+}
+
+a {
+	color: #c4c7ff !important;
+}
+
+@media (max-width: 600px) {
+	.container-sign-in {
+		flex-direction: column;
+		align-items: center;
+		height: 100vh;
+	}
+
+	.sign-in-image {
+		width: 100vw;
+		height: fit-content;
+		align-items: center;
+	}
+
+	.card-sign-in {
+		margin-top: 20px;
+		width: 80vw;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+	.btn-sign-in {
+		align-self: center;
+	}
+
+	.header-sign-in {
+		width: 100%;
+	}
+	.body-sign-in {
+		width: 100%;
+	}
+}

@@ -2,6 +2,7 @@ import { createContext } from "react";
 
 export const initialState = {
 	publications: [],
+	loggedIn: false,
 };
 
-export const PublicationsContext = createContext({});
+export const AppContext = createContext({});

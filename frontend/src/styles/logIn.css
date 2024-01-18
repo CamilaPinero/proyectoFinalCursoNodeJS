@@ -1,0 +1,78 @@
+.card-log-in {
+	align-self: center;
+	height: fit-content;
+	width: 40vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.log-in-image {
+	background-image: url(https://www.litter-robot.com/media/magefan_blog/2019/08/conjunctivitis-1.jpeg);
+	background-size: cover;
+	background-position-x: 20%;
+	height: 100vh;
+	width: 60vw;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+	gap: 10px;
+	color: #f1f1f1;
+	padding: 40px;
+}
+
+.container-log-in {
+	padding: 0;
+	background-color: #646cff;
+	background: linear-gradient(90deg, #b5a8ff 60%, #646cff 100%);
+	display: flex;
+	justify-content: start;
+	gap: 0;
+}
+
+.header-log-in {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	color: #f1f1f1;
+	width: 80%;
+}
+
+.body-log-in {
+	color: #f1f1f1;
+	width: 80%;
+}
+
+@media (max-width: 600px) {
+	.container-log-in {
+		flex-direction: column;
+		align-items: center;
+		height: 100vh;
+	}
+
+	.log-in-image {
+		width: 100vw;
+		height: fit-content;
+		align-items: center;
+	}
+
+	.card-log-in {
+		margin-top: 20px;
+		width: 80vw;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+	.btn-log-in {
+		align-self: center;
+	}
+
+	.header-log-in {
+		width: 100%;
+	}
+	.body-log-in {
+		width: 100%;
+	}
+}

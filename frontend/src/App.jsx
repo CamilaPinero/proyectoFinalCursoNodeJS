@@ -5,39 +5,46 @@ import { Container } from "./components/Container";
 import { NewPublication } from "./components/NewPublication";
 import { FullPublication } from "./components/FullPublication";
 import { useReducer } from "react";
-import { PublicationsReducer } from "./components/PublicationsReducer";
-import {
-	PublicationsContext,
-	initialState,
-} from "./components/PublicationsContext";
+import { AppReducer } from "./components/AppReducer";
+import { AppContext, initialState } from "./components/AppContext";
+import { SignIn } from "./components/SignIn";
+import { LogIn } from "./components/LogIn";
 
 function App() {
-	const [data, dispatch] = useReducer(PublicationsReducer, initialState);
+	const [data, dispatch] = useReducer(AppReducer, initialState);
 
 	return (
-		<PublicationsContext.Provider
+		<AppContext.Provider
 			value={{
 				state: data,
 				dispatch,
 			}}
 		>
 			<Router>
-				<Header />
-
-				<Routes>
-					<Route path="/" element={<Container />}></Route>
-					<Route
-						path="/create-new-publication"
-						element={<NewPublication />}
-					></Route>
-					<Route
-						path="/publication/:id"
-						element={<FullPublication />}
-					></Route>
-				</Routes>
-				<Footer />
+				{data.loggedIn ? (
+					<>
+						<Header />
+						<Routes>
+							<Route path="/" element={<Container />}></Route>
+							<Route
+								path="/create-new-publication"
+								element={<NewPublication />}
+							></Route>
+							<Route
+								path="/publication/:id"
+								element={<FullPublication />}
+							></Route>
+						</Routes>
+						<Footer />
+					</>
+				) : (
+					<Routes>
+						<Route path="/sign-in" element={<SignIn />}></Route>
+						<Route path="/log-in" element={<LogIn />}></Route>
+					</Routes>
+				)}
 			</Router>
-		</PublicationsContext.Provider>
+		</AppContext.Provider>
 	);
 }
 
