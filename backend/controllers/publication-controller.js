@@ -3,6 +3,7 @@ import Publication from "../model/publication.js";
 const createPublication = async (req, res) => {
 	try {
 		const publication = await Publication.create(req.body);
+
 		res.json(publication);
 	} catch (error) {
 		console.error(error);

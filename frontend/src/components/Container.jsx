@@ -2,7 +2,7 @@ import "../styles/container.css";
 import { useContext, useEffect, useState } from "react";
 import { PublicationCard } from "./PublicationCard";
 import { useNavigate } from "react-router-dom";
-import { fetchPublications } from "../ApiMethods";
+import { fetchPublications } from "../api/publications";
 import { AppContext } from "./AppContext";
 
 export const Container = () => {

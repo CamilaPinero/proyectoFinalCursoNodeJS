@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 import { mdiMenu, mdiMagnify, mdiClose } from "@mdi/js";
 
 import { useNavigate } from "react-router-dom";
-import { fetchPublicationByKeyWord } from "../ApiMethods";
+import { fetchPublicationByKeyWord } from "../api/publications";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./AppContext";
 

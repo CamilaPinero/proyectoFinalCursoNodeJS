@@ -1,20 +1,21 @@
 import "../styles/logIn.css";
 import logo from "../assets/logo.png";
-import { AppContext } from "./AppContext";
+import { logIn } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export const LogIn = () => {
+	const navigate = useNavigate();
+
 	async function handleLogIn(e) {
-		try {
-			e.preventDefault();
+		e.preventDefault();
+		const response = await logIn({
+			user: e.target.username.value,
+			password: e.target.password.value,
+		});
 
-			//const payload = await logIn;
-
-			AppContext.dispatch({
-				type: "setIsLoggedIn",
-				payload: true,
-			});
-		} catch (error) {
-			console.error(error);
+		if (response.token) {
+			localStorage.setItem("token", response.token);
+			navigate(0);
 		}
 	}
 
@@ -32,15 +33,15 @@ export const LogIn = () => {
 						<form action="submit" onSubmit={(e) => handleLogIn(e)}>
 							<div className="mb-3">
 								<label
-									htmlFor="user-name"
+									htmlFor="username"
 									className="form-label"
 								>
 									Nombre de usuario
 								</label>
 								<input
-									type="user-name"
+									type="username"
 									className="form-control"
-									id="user-name"
+									id="username"
 									placeholder="Ingresa un nombre de usuario"
 								></input>
 							</div>

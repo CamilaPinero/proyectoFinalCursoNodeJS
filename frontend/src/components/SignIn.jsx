@@ -1,7 +1,27 @@
 import "../styles/signIn.css";
 import logo from "../assets/logo.png";
+import { signUp } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+	const navigate = useNavigate();
+
+	async function handleSignUp(e) {
+		try {
+			e.preventDefault();
+			const response = await signUp({
+				user: e.target.username.value,
+				password: e.target.password.value,
+			});
+			console.log(response);
+			if (response.ok) {
+				navigate("/log-in");
+			}
+		} catch (response) {
+			console.error(response);
+		}
+	}
+
 	return (
 		<>
 			<div className="container container-sign-in">
@@ -14,18 +34,18 @@ export const SignIn = () => {
 						<h3>Registrate para continuar</h3>
 					</div>
 					<div className="card-body body-sign-in">
-						<form action="submit">
+						<form action="submit" onSubmit={(e) => handleSignUp(e)}>
 							<div className="mb-3">
 								<label
-									htmlFor="user-name"
+									htmlFor="username"
 									className="form-label"
 								>
 									Nombre de usuario
 								</label>
 								<input
-									type="user-name"
+									type="username"
 									className="form-control"
-									id="user-name"
+									id="username"
 									placeholder="Ingresa un nombre de usuario"
 								></input>
 							</div>

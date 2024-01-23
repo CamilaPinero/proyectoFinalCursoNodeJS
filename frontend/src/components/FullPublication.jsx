@@ -6,8 +6,8 @@ import {
 	deletePublication,
 	editPublication,
 	fetchPublicationById,
-	createComment,
-} from "../ApiMethods";
+} from "../api/publications";
+import { createComment } from "../api/comments";
 import { useNavigate, useParams } from "react-router-dom";
 import { Comment } from "./Comment";
 import Icon from "@mdi/react";

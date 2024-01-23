@@ -17,9 +17,16 @@ const publicationSchema = new Schema(
 			type: String,
 			default: "",
 		},
+		user: {
+			type: String,
+			required: true,
+		},
 		comments: [
 			{
-				user: String,
+				user: {
+					type: String,
+					required: true,
+				},
 				content: String,
 			},
 		],
