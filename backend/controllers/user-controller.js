@@ -23,22 +23,28 @@ const logIn = async (req, res) => {
 		const user = await User.findOne({
 			user: req.body.user,
 		});
-		const isPasswordMatch = await bcrypt.compare(
-			req.body.password,
-			user.password
-		);
 
-		if (isPasswordMatch) {
-			const token = jwt.sign({ user: user.user }, process.env.SECRET, {
-				expiresIn: "1h",
-			});
+		if (user) {
+			const isPasswordMatch = await bcrypt.compare(
+				req.body.password,
+				user.password
+			);
+			if (isPasswordMatch) {
+				const token = jwt.sign({ user: user }, process.env.SECRET, {
+					expiresIn: "1h",
+				});
 
-			return res.json({ token });
+				return res.json({ token });
+			} else {
+				//return res.json("contraseña incorrecta");
+				throw new Error("La contraseña ingresada es incorrecta");
+			}
 		} else {
-			return res.json("contraseña incorrecta");
+			//return res.json("usuario incorrecto");
+			throw new Error("El usuario ingresado es incorrecto");
 		}
 	} catch (error) {
-		console.error(error);
+		res.status(400).send({ error: error.message });
 	}
 };
 

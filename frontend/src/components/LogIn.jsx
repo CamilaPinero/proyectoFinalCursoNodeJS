@@ -8,19 +8,19 @@ export const LogIn = () => {
 	const navigate = useNavigate();
 
 	async function handleLogIn(e) {
-		e.preventDefault();
-		const response = await logIn({
-			user: e.target.username.value,
-			password: e.target.password.value,
-		});
+		try {
+			e.preventDefault();
+			const response = await logIn({
+				user: e.target.username.value,
+				password: e.target.password.value,
+			});
 
-		if (response.token) {
-			localStorage.setItem("token", response.token);
-			navigate(0);
-		}
-
-		if (response === "contraseña incorrecta") {
-			toast.error("La contraseña ingresada es incorrecta");
+			if (response.token) {
+				localStorage.setItem("token", response.token);
+				navigate(0);
+			}
+		} catch (error) {
+			toast.error(error.message);
 		}
 	}
 

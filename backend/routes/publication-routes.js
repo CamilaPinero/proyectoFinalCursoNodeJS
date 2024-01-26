@@ -8,12 +8,13 @@ import {
 	deletePublication,
 	getPublicationsByKeyWord,
 } from "../controllers/publication-controller.js";
+import { authenticateToken } from "../middleware/token-middleware.js";
 
-router.post("/", createPublication);
-router.get("/", getAllPublications);
-router.get("/:id", getPublicationById);
-router.get("/search/:keyWord", getPublicationsByKeyWord);
-router.put("/:id", editPublication);
-router.delete("/:id", deletePublication);
+router.post("/", authenticateToken, createPublication);
+router.get("/", authenticateToken, getAllPublications);
+router.get("/:id", authenticateToken, getPublicationById);
+router.get("/search/:keyWord", authenticateToken, getPublicationsByKeyWord);
+router.put("/:id", authenticateToken, editPublication);
+router.delete("/:id", authenticateToken, deletePublication);
 
 export default router;

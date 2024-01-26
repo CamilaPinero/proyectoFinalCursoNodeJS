@@ -5,13 +5,20 @@ export const connectionData = async (options) => {
 			headers: {},
 		};
 
+		if (options.token) {
+			requestOptions.headers = {
+				...requestOptions.headers,
+				Authorization: options.token,
+			};
+		}
 		if (options.body) {
 			requestOptions.headers = {
+				...requestOptions.headers,
 				"Content-Type": "application.json",
-				Authorization: options.token,
 			};
 			requestOptions.body = JSON.stringify(options.body);
 		}
+
 		const response = await fetch(
 			`${options.endpoint}/${options.direction}`,
 			requestOptions
@@ -25,5 +32,6 @@ export const connectionData = async (options) => {
 		return data;
 	} catch (error) {
 		console.error("Hubo el siguiente error: ", error);
+		// TODO: si la respuesta es 403 redireccionar al log in
 	}
 };

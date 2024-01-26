@@ -11,7 +11,7 @@ export async function fetchPublications() {
 			{
 				method: "GET",
 				headers: {
-					Authorization: sessionStorage.getItem("token") ?? null,
+					Authorization: localStorage.getItem("token") ?? null,
 				},
 			}
 		);
@@ -30,7 +30,7 @@ export async function fetchPublications() {
 		endpoint: import.meta.env.VITE_BACKEND_URL,
 		direction: "publications",
 		method: "GET",
-		token: sessionStorage.getItem("token") ?? null,
+		token: localStorage.getItem("token") ?? null,
 		body: false,
 	};
 
@@ -61,7 +61,7 @@ export async function fetchPublicationById(publicationId) {
 		endpoint: import.meta.env.VITE_BACKEND_URL,
 		direction: `publications/${publicationId}`,
 		method: "GET",
-		token: sessionStorage.getItem("token") ?? null,
+		token: localStorage.getItem("token") ?? null,
 		body: false,
 	};
 
@@ -96,17 +96,15 @@ export async function createPublication(publication) {
 		endpoint: import.meta.env.VITE_BACKEND_URL,
 		direction: `publications`,
 		method: "POST",
-		token: sessionStorage.getItem("token") ?? null,
+		token: localStorage.getItem("token") ?? null,
 		body: JSON.stringify({ ...publication, user: "user" }), //aca!!!
 	};
-	console.log(publication);
 	const result = await connectionData(options);
 	return result;
 }
 
 export async function editPublication(publicationId, publication) {
 	try {
-		console.log(publication);
 		const response = await fetch(
 			`${import.meta.env.VITE_BACKEND_URL}/publications/${publicationId}`,
 			{

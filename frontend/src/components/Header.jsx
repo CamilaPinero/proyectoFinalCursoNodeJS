@@ -117,6 +117,7 @@ export const Header = () => {
 						<div className="nav-item logOut">
 							<Icon path={mdiLogout} size={1} />
 						</div>
+						{/* TODO: delete token, redirect login */}
 					</div>
 				</div>
 			</div>
