@@ -75,18 +75,21 @@ export const Comment = (props) => {
 							<div className="d-flex comment-header">
 								<img
 									className="rounded-circle shadow-1-strong me-3"
-									src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+									src={`https://ui-avatars.com/api/?name=${props.com.user}&background=random`}
 									alt="avatar"
 								/>
 								<h6 className="commentUser">
 									{props.com.user}
 								</h6>
-								<button
-									className="btn btn-sm edit"
-									onClick={() => setShowEditComment(true)}
-								>
-									editar
-								</button>
+								{props.com.userId ===
+									localStorage.getItem("userId") && (
+									<button
+										className="btn btn-sm edit"
+										onClick={() => setShowEditComment(true)}
+									>
+										editar
+									</button>
+								)}
 							</div>
 							<p className="mb-0">{props.com.content}</p>
 						</div>

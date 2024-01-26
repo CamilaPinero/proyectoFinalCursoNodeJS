@@ -17,12 +17,20 @@ const publicationSchema = new Schema(
 			type: String,
 			default: "",
 		},
+		userId: {
+			type: String,
+			required: true,
+		},
 		user: {
 			type: String,
 			required: true,
 		},
 		comments: [
 			{
+				userId: {
+					type: String,
+					required: true,
+				},
 				user: {
 					type: String,
 					required: true,

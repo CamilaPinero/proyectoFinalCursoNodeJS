@@ -11,9 +11,7 @@ export const PublicationCard = (props) => {
 			<div key={props.pub._id} className="card publication">
 				<div className="card-header">
 					<h5 className="card-title">{props.pub.title}</h5>
-					<h6 className="username">
-						{props.pub.user || "PepitoJuarez"}
-					</h6>
+					<h6 className="username">{props.pub.user}</h6>
 				</div>
 
 				<div className="card-body">

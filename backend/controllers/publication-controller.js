@@ -1,8 +1,12 @@
 import Publication from "../model/publication.js";
+import User from "../model/user.js";
 
 const createPublication = async (req, res) => {
 	try {
-		const publication = await Publication.create(req.body);
+		const userId = req.user.user._id;
+		const user = await User.findById(userId);
+		const newPublication = { ...req.body, userId, user: user.user };
+		const publication = await Publication.create(newPublication);
 
 		res.json(publication);
 	} catch (error) {

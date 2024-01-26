@@ -1,4 +1,5 @@
 import Publication from "../model/publication.js";
+import User from "../model/user.js";
 
 export const getComment = async (req, res) => {
 	try {
@@ -55,10 +56,11 @@ export const deleteComment = async (req, res) => {
 export const createComment = async (req, res) => {
 	try {
 		const { id } = req.params;
-
+		const userId = req.user.user._id;
+		const user = await User.findById(userId);
 		const publication = await Publication.findOneAndUpdate(
 			{ _id: id },
-			{ $push: { comments: req.body } }
+			{ $push: { comments: { ...req.body, userId, user: user.user } } }
 		);
 
 		if (!publication) {

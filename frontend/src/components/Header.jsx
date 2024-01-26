@@ -35,6 +35,12 @@ export const Header = () => {
 		});
 	}
 
+	function handleLogout() {
+		localStorage.removeItem("token");
+		localStorage.removeItem("userId");
+		navigate(0);
+	}
+
 	useEffect(() => {
 		if (!search) resetPublications();
 	}, [search]);
@@ -114,7 +120,7 @@ export const Header = () => {
 							</form>
 						</div>
 
-						<div className="nav-item logOut">
+						<div className="nav-item logOut" onClick={handleLogout}>
 							<Icon path={mdiLogout} size={1} />
 						</div>
 						{/* TODO: delete token, redirect login */}

@@ -14,13 +14,12 @@ export const connectionData = async (options) => {
 		if (options.body) {
 			requestOptions.headers = {
 				...requestOptions.headers,
-				"Content-Type": "application.json",
+				"Content-Type": "application/json",
 			};
 			requestOptions.body = JSON.stringify(options.body);
 		}
-
 		const response = await fetch(
-			`${options.endpoint}/${options.direction}`,
+			`${import.meta.env.VITE_BACKEND_URL}/${options.direction}`,
 			requestOptions
 		);
 

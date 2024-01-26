@@ -15,7 +15,7 @@ import { mdiCog } from "@mdi/js";
 import toast, { Toaster } from "react-hot-toast";
 
 export const FullPublication = () => {
-	const [user, setUser] = useState("userDePrueba");
+	const [user, setUser] = useState("");
 	const [content, setContent] = useState("");
 	const [showSend, setShowSend] = useState(false);
 	const [showEditPublication, setShowEditPublication] = useState(false);
@@ -154,45 +154,48 @@ export const FullPublication = () => {
 					>
 						<div className="card-header">
 							<h5 className="card-title">{publication.title}</h5>
-
-							<div className="dropdown">
-								<button
-									className="btn dropdown-toggle btn-sm setting-publication"
-									type="button"
-									id="dropdownMenuButton"
-									data-bs-toggle="dropdown"
-									aria-expanded="false"
-								>
-									<Icon
-										className="setting"
-										path={mdiCog}
-										size={0.8}
-									/>
-								</button>
-								<div
-									className="dropdown-menu"
-									aria-labelledby="dropdownMenuButton"
-								>
+							<h6 className="username">{publication.user}</h6>
+							{publication.userId ===
+								localStorage.getItem("userId") && (
+								<div className="dropdown">
 									<button
-										className="dropdown-option"
-										onClick={() =>
-											setShowEditPublication(true)
-										}
+										className="btn dropdown-toggle btn-sm setting-publication"
+										type="button"
+										id="dropdownMenuButton"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
 									>
-										Editar
+										<Icon
+											className="setting"
+											path={mdiCog}
+											size={0.8}
+										/>
 									</button>
-									<button
-										className="dropdown-option"
-										onClick={() =>
-											handleDeletePublication(
-												publication._id
-											)
-										}
+									<div
+										className="dropdown-menu"
+										aria-labelledby="dropdownMenuButton"
 									>
-										Eliminar
-									</button>
+										<button
+											className="dropdown-option"
+											onClick={() =>
+												setShowEditPublication(true)
+											}
+										>
+											Editar
+										</button>
+										<button
+											className="dropdown-option"
+											onClick={() =>
+												handleDeletePublication(
+													publication._id
+												)
+											}
+										>
+											Eliminar
+										</button>
+									</div>
 								</div>
-							</div>
+							)}
 						</div>
 
 						<div className="card-body">

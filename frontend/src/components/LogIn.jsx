@@ -15,8 +15,9 @@ export const LogIn = () => {
 				password: e.target.password.value,
 			});
 
-			if (response.token) {
+			if (response.token && response.userId) {
 				localStorage.setItem("token", response.token);
+				localStorage.setItem("userId", response.userId);
 				navigate(0);
 			}
 		} catch (error) {
