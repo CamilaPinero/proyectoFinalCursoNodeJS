@@ -1,13 +1,17 @@
-const token = sessionStorage.getItem("token") ?? null;
+import { connectionData } from "./apiConnection";
 
+/* export const fetchPublications = await connectionData(
+	
+);
+ */
 export async function fetchPublications() {
-	try {
+	/* try {
 		const response = await fetch(
 			`${import.meta.env.VITE_BACKEND_URL}/publications`,
 			{
 				method: "GET",
 				headers: {
-					Authorization: token,
+					Authorization: sessionStorage.getItem("token") ?? null,
 				},
 			}
 		);
@@ -20,11 +24,22 @@ export async function fetchPublications() {
 		return data;
 	} catch (error) {
 		console.error(error);
-	}
+	} */
+
+	const options = {
+		endpoint: import.meta.env.VITE_BACKEND_URL,
+		direction: "publications",
+		method: "GET",
+		token: sessionStorage.getItem("token") ?? null,
+		body: false,
+	};
+
+	const result = await connectionData(options);
+	return result;
 }
 
 export async function fetchPublicationById(publicationId) {
-	try {
+	/* try {
 		const response = await fetch(
 			`${import.meta.env.VITE_BACKEND_URL}/publications/${publicationId}`,
 			{
@@ -40,11 +55,22 @@ export async function fetchPublicationById(publicationId) {
 		return data;
 	} catch (error) {
 		console.error(error);
-	}
+	} */
+
+	const options = {
+		endpoint: import.meta.env.VITE_BACKEND_URL,
+		direction: `publications/${publicationId}`,
+		method: "GET",
+		token: sessionStorage.getItem("token") ?? null,
+		body: false,
+	};
+
+	const result = await connectionData(options);
+	return result;
 }
 
 export async function createPublication(publication) {
-	try {
+	/* try {
 		const response = await fetch(
 			`${import.meta.env.VITE_BACKEND_URL}/publications`,
 			{
@@ -64,7 +90,18 @@ export async function createPublication(publication) {
 		return data;
 	} catch (error) {
 		console.error(error);
-	}
+	} */
+
+	const options = {
+		endpoint: import.meta.env.VITE_BACKEND_URL,
+		direction: `publications`,
+		method: "POST",
+		token: sessionStorage.getItem("token") ?? null,
+		body: JSON.stringify({ ...publication, user: "user" }), //aca!!!
+	};
+	console.log(publication);
+	const result = await connectionData(options);
+	return result;
 }
 
 export async function editPublication(publicationId, publication) {

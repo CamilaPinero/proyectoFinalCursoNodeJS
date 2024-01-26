@@ -12,7 +12,7 @@ import { FullPublication } from "./components/FullPublication";
 import { useEffect, useReducer, useState } from "react";
 import { AppReducer } from "./components/AppReducer";
 import { AppContext, initialState } from "./components/AppContext";
-import { SignIn } from "./components/SignIn";
+import { SignUp } from "./components/SignUp";
 import { LogIn } from "./components/LogIn";
 
 function App() {
@@ -57,9 +57,9 @@ function App() {
 						<Route
 							path="/"
 							default
-							element={<Navigate to="/sign-in" />}
+							element={<Navigate to="/sign-up" />}
 						></Route>
-						<Route path="/sign-in" element={<SignIn />}></Route>
+						<Route path="/sign-up" element={<SignUp />}></Route>
 						<Route path="/log-in" element={<LogIn />}></Route>
 					</Routes>
 				)}

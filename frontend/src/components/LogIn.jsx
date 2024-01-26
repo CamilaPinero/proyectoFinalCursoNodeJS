@@ -2,6 +2,7 @@ import "../styles/logIn.css";
 import logo from "../assets/logo.png";
 import { logIn } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
 
 export const LogIn = () => {
 	const navigate = useNavigate();
@@ -17,13 +18,21 @@ export const LogIn = () => {
 			localStorage.setItem("token", response.token);
 			navigate(0);
 		}
+
+		if (response === "contraseña incorrecta") {
+			toast.error("La contraseña ingresada es incorrecta");
+		}
 	}
 
 	return (
 		<>
 			<div className="container container-log-in">
 				<div className="log-in-image">
-					<img src={logo} alt="catinstagram" className="logo" />
+					<img
+						src={logo}
+						alt="catinstagram"
+						className="logo sign-up"
+					/>
 				</div>
 				<div className="card-log-in">
 					<div className="card-header header-log-in">
@@ -68,12 +77,13 @@ export const LogIn = () => {
 							</button>
 							<p>
 								Si todavía no tenés una cuenta podés
-								<a href="/sign-in"> registrarte acá</a>
+								<a href="/sign-up"> registrarte acá</a>
 							</p>
 						</form>
 					</div>
 				</div>
 			</div>
+			<Toaster />
 		</>
 	);
 };

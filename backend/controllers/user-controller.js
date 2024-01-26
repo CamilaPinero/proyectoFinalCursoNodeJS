@@ -23,7 +23,6 @@ const logIn = async (req, res) => {
 		const user = await User.findOne({
 			user: req.body.user,
 		});
-
 		const isPasswordMatch = await bcrypt.compare(
 			req.body.password,
 			user.password
@@ -33,7 +32,7 @@ const logIn = async (req, res) => {
 			const token = jwt.sign({ user: user.user }, process.env.SECRET, {
 				expiresIn: "1h",
 			});
-			console.log(token);
+
 			return res.json({ token });
 		} else {
 			return res.json("contraseña incorrecta");

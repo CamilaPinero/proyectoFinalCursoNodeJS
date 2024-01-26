@@ -2,6 +2,7 @@
 import "../styles/comment.css";
 import { useState } from "react";
 import { deleteComment, editComment } from "../api/comments";
+import PropTypes from "prop-types";
 
 export const Comment = (props) => {
 	const [showEditComment, setShowEditComment] = useState(false);
@@ -97,4 +98,13 @@ export const Comment = (props) => {
 			</div>
 		</>
 	);
+};
+
+Comment.PropTypes = {
+	user: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	loadPublication: PropTypes.func.isRequired,
+	pub: PropTypes.any.isRequired,
+	com: PropTypes.any.isRequired,
+	setContent: PropTypes.func.isRequired,
 };

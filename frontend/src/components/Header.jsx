@@ -1,8 +1,7 @@
 import "../styles/header.css";
 import Icon from "@mdi/react";
 import logo from "../assets/logo.png";
-import { mdiMenu, mdiMagnify, mdiClose } from "@mdi/js";
-
+import { mdiMenu, mdiMagnify, mdiClose, mdiLogout } from "@mdi/js";
 import { useNavigate } from "react-router-dom";
 import { fetchPublicationByKeyWord } from "../api/publications";
 import { useContext, useEffect, useState } from "react";
@@ -71,7 +70,6 @@ export const Header = () => {
 								className="nav-item"
 								onClick={() => navigate(option.route)}
 								key={option.title}
-								style={{ marginLeft: "10px" }}
 							>
 								{option.title}
 							</div>
@@ -115,9 +113,36 @@ export const Header = () => {
 								</button>
 							</form>
 						</div>
+
+						<div className="nav-item logOut">
+							<Icon path={mdiLogout} size={1} />
+						</div>
 					</div>
 				</div>
 			</div>
 		</nav>
 	);
 };
+
+{
+	/* <div className="config">
+							<button
+								type="button"
+								className="btn btn-config dropdown-toggle"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<Icon path={mdiCog} size={1} />
+							</button>
+							<ul className="dropdown-menu">
+								<li>
+									<a className="logOut">Cerrar Sesión</a>
+								</li>
+								<li>
+									<a className="reportProblem">
+										Reportar un problema
+									</a>
+								</li>
+							</ul>
+						</div> */
+}

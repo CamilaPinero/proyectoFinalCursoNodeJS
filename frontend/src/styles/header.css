@@ -22,6 +22,8 @@
 	padding: 5px;
 	border-radius: 1px;
 	font-size: 1.25rem;
+	margin-left: 10px;
+	color: #f8f8f8;
 }
 
 .nav-item:hover {
@@ -42,7 +44,6 @@
 }
 
 .navbar-nav {
-	justify-content: flex-start;
 	width: 100%;
 }
 
@@ -55,11 +56,16 @@
 	padding: 4px 8px !important;
 	margin-bottom: 0 !important;
 }
-
 .resetSearch {
 	background-color: transparent !important;
 	color: #f8f8f8 !important;
 	padding: 2px 4px !important;
+}
+
+.logOut {
+	display: flex;
+	align-items: center;
+	border-radius: 0.2rem;
 }
 
 @media (min-width: 990px) {

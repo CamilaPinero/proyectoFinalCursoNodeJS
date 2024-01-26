@@ -23,7 +23,7 @@ export const logIn = async (user) => {
 };
 
 export const signUp = async (user) => {
-	const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/signIn`, {
+	const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/signUp`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

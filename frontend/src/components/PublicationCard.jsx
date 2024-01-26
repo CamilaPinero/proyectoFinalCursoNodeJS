@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import PropTypes from "prop-types";
 import "../styles/publicationCard.css";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,9 @@ export const PublicationCard = (props) => {
 			<div key={props.pub._id} className="card publication">
 				<div className="card-header">
 					<h5 className="card-title">{props.pub.title}</h5>
+					<h6 className="username">
+						{props.pub.user || "PepitoJuarez"}
+					</h6>
 				</div>
 
 				<div className="card-body">
@@ -36,4 +39,8 @@ export const PublicationCard = (props) => {
 			</div>
 		</>
 	);
+};
+
+PublicationCard.PropTypes = {
+	pub: PropTypes.object.isRequired,
 };

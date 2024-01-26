@@ -1,24 +1,31 @@
-import "../styles/signIn.css";
+import "../styles/signUp.css";
 import logo from "../assets/logo.png";
 import { signUp } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
-export const SignIn = () => {
-	const navigate = useNavigate();
-
+export const SignUp = () => {
 	async function handleSignUp(e) {
 		try {
 			e.preventDefault();
-			const response = await signUp({
-				user: e.target.username.value,
-				password: e.target.password.value,
-			});
-			console.log(response);
-			if (response.ok) {
-				navigate("/log-in");
+
+			if (e.target.password.value === e.target.confirmPassword.value) {
+				const response = await signUp({
+					user: e.target.username.value,
+					password: e.target.password.value,
+				});
+
+				if (response.ok) {
+					toast.success(
+						<div>
+							Usuario creado! <a href="/log-in">Iniciar sesión</a>
+						</div>
+					);
+				}
+			} else {
+				toast.error("Las contraseñas no coinciden");
 			}
 		} catch (response) {
-			console.error(response);
+			toast.error(response);
 		}
 	}
 
@@ -27,7 +34,11 @@ export const SignIn = () => {
 			<div className="container container-sign-in">
 				<div className="sign-in-image">
 					<h1>Bienvenid@ a</h1>
-					<img src={logo} alt="catinstagram" className="logo" />
+					<img
+						src={logo}
+						alt="catinstagram"
+						className="logo sign-up"
+					/>
 				</div>
 				<div className="card-sign-in">
 					<div className="card-header header-sign-in">
@@ -47,6 +58,7 @@ export const SignIn = () => {
 									className="form-control"
 									id="username"
 									placeholder="Ingresa un nombre de usuario"
+									required
 								></input>
 							</div>
 							<div className="mb-3">
@@ -61,20 +73,22 @@ export const SignIn = () => {
 									id="password"
 									className="form-control"
 									placeholder="Ingresa una contraseña"
+									required
 								></input>
 							</div>
 							<div className="mb-3">
 								<label
-									htmlFor="confirm-password"
+									htmlFor="confirmPassword"
 									className="form-label"
 								>
 									Confirmá tu contraseña
 								</label>
 								<input
 									type="password"
-									id="confirm-password"
+									id="confirmPassword"
 									className="form-control"
 									placeholder="Ingresa la contraseña nuevamente"
+									required
 								></input>
 							</div>
 							<button
@@ -85,12 +99,16 @@ export const SignIn = () => {
 							</button>
 							<p>
 								Si ya tenés una cuenta podés
-								<a href="/log-in"> iniciar sesión acá</a>
+								<a className="log-in-link" href="/log-in">
+									{" "}
+									iniciar sesión acá
+								</a>
 							</p>
 						</form>
 					</div>
 				</div>
 			</div>
+			<Toaster />
 		</>
 	);
 };
