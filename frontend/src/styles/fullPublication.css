@@ -43,6 +43,10 @@
 	border: none;
 }
 
+.spinner-border {
+	color: #747bff;
+}
+
 @media (max-width: 450px) {
 	h5 {
 		font-size: 1rem;

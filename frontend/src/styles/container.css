@@ -17,6 +17,10 @@
 	gap: 10px;
 }
 
+.spinner-border {
+	color: #747bff;
+}
+
 @media (max-width: 450px) {
 	.container {
 		padding: 2em 0;

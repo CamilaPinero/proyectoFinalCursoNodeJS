@@ -80,7 +80,10 @@ export const LogIn = () => {
 							</button>
 							<p>
 								Si todavía no tenés una cuenta podés
-								<a href="/sign-up"> registrarte acá</a>
+								<a className="log-in-link" href="/sign-up">
+									{" "}
+									registrarte acá
+								</a>
 							</p>
 						</form>
 					</div>
