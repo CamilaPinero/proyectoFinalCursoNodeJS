@@ -18,6 +18,7 @@ export const FullPublication = () => {
 	const [user, setUser] = useState("");
 	const [content, setContent] = useState("");
 	const [showSend, setShowSend] = useState(false);
+	const [selectedComment, setSelectedComment] = useState("");
 	const [showEditPublication, setShowEditPublication] = useState(false);
 	const [publication, setPublication] = useState({});
 	const { id } = useParams();
@@ -53,6 +54,7 @@ export const FullPublication = () => {
 			});
 			setContent("");
 			await loadPublication();
+			console.log(publication);
 		}
 	}
 
@@ -152,9 +154,13 @@ export const FullPublication = () => {
 						key={publication._id}
 						className="card full-publication"
 					>
-						<div className="card-header">
-							<h5 className="card-title">{publication.title}</h5>
-							<h6 className="username">{publication.user}</h6>
+						<div className="card-header full-publication-header">
+							<div>
+								<h5 className="card-title">
+									{publication.title}
+								</h5>
+								<h6 className="username">{publication.user}</h6>
+							</div>
 							{publication.userId ===
 								localStorage.getItem("userId") && (
 								<div className="dropdown">
@@ -204,7 +210,6 @@ export const FullPublication = () => {
 								src={publication.image}
 								className="card-img-full"
 							></img>
-
 							<div>
 								<h5>Comentarios</h5>
 								{publication &&
@@ -215,33 +220,43 @@ export const FullPublication = () => {
 											key={com._id}
 											pub={publication}
 											com={com}
-											user={user}
 											content={content}
 											setContent={setContent}
 											loadPublication={loadPublication}
+											selectedComment={selectedComment}
+											setSelectedComment={
+												setSelectedComment
+											}
 										/>
 									))}
 							</div>
-							<div className="comment-box-send">
-								<input
-									className="form-control comment-send"
-									type="text"
-									placeholder="agregar un comentario"
-									onClick={() => setShowSend(!showSend)}
-									value={content}
-									onChange={(e) => setContent(e.target.value)}
-								/>
-								{showSend && (
-									<button
-										className="btn-sm btn btn-comment-send"
-										onClick={() =>
-											handleSendComment(publication._id)
+
+							{!selectedComment && (
+								<div className="comment-box-send">
+									<input
+										className="form-control comment-send"
+										type="text"
+										placeholder="agregar un comentario"
+										onClick={() => setShowSend(!showSend)}
+										value={content}
+										onChange={(e) =>
+											setContent(e.target.value)
 										}
-									>
-										Enviar
-									</button>
-								)}
-							</div>
+									/>
+									{showSend && (
+										<button
+											className="btn-sm btn btn-comment-send"
+											onClick={() =>
+												handleSendComment(
+													publication._id
+												)
+											}
+										>
+											Enviar
+										</button>
+									)}
+								</div>
+							)}
 						</div>
 					</div>
 				)}

@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
 import "../styles/comment.css";
-import { useState } from "react";
 import { deleteComment, editComment } from "../api/comments";
 import PropTypes from "prop-types";
+//import { useState } from "react";
 
 export const Comment = (props) => {
-	const [showEditComment, setShowEditComment] = useState(false);
-
 	async function handleEditComment(commentId) {
 		await editComment(commentId, {
-			user: props.user,
 			content: props.content,
 		});
+		props.setContent("");
 		await props.loadPublication();
-		setShowEditComment(false);
+
+		props.setSelectedComment("");
 	}
 
 	async function handleDeleteComment(commentId) {
@@ -24,19 +23,19 @@ export const Comment = (props) => {
 	return (
 		<>
 			<div className="card-body comment">
-				{showEditComment ? (
+				{props.selectedComment === props.com._id ? (
 					<div className="d-flex flex-start">
 						<img
 							className="rounded-circle shadow-1-strong me-3"
-							src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+							src={`https://ui-avatars.com/api/?name=${props.com.user}&background=random`}
 							alt="avatar"
 						/>
-						<div className=" mb-1 ">
+						<div className="mb-1">
 							<div className="d-flex comment-header">
-								<h6>{props.pub.user}</h6>
+								<h6>{props.com.user}</h6>
 								<button
 									className="btn btn-sm"
-									onClick={() => setShowEditComment(false)}
+									onClick={() => props.setSelectedComment("")}
 								>
 									cancelar
 								</button>
@@ -85,7 +84,11 @@ export const Comment = (props) => {
 									localStorage.getItem("userId") && (
 									<button
 										className="btn btn-sm edit"
-										onClick={() => setShowEditComment(true)}
+										onClick={() =>
+											props.setSelectedComment(
+												props.com._id
+											)
+										}
 									>
 										editar
 									</button>
@@ -104,10 +107,9 @@ export const Comment = (props) => {
 };
 
 Comment.PropTypes = {
-	user: PropTypes.string.isRequired,
 	content: PropTypes.string.isRequired,
+	setContent: PropTypes.func.isRequired,
 	loadPublication: PropTypes.func.isRequired,
 	pub: PropTypes.any.isRequired,
 	com: PropTypes.any.isRequired,
-	setContent: PropTypes.func.isRequired,
 };

@@ -92,7 +92,6 @@ form {
 
 .card-img {
 	max-height: 190px;
-	min-height: 100px;
 	object-fit: cover;
 	object-position: 25% 25%;
 }

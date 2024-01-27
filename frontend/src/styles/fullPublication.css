@@ -4,6 +4,11 @@
 	text-align: start !important;
 }
 
+.full-publication-header {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .card-img-full {
 	object-fit: contain;
 	border-radius: 4px;

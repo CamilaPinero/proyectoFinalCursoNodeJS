@@ -13,7 +13,7 @@ export const SignUp = () => {
 					user: e.target.username.value,
 					password: e.target.password.value,
 				});
-
+				console.log(response);
 				if (response.ok) {
 					toast.success(
 						<div>

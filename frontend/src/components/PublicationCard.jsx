@@ -24,7 +24,6 @@ export const PublicationCard = (props) => {
 						ver mas
 					</a>
 					<img src={props.pub.image} className="card-img"></img>
-
 					<button
 						className="btn btn-primary"
 						onClick={() =>

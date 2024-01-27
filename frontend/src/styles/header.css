@@ -24,6 +24,7 @@
 	font-size: 1.25rem;
 	margin-left: 10px;
 	color: #f8f8f8;
+	width: fit-content;
 }
 
 .nav-item:hover {

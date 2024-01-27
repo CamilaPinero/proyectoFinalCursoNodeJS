@@ -54,7 +54,9 @@ export const Header = () => {
 					className="logo"
 					onClick={() => navigate("/")}
 				/>
-
+				<div className="nav-item logOut" onClick={handleLogout}>
+					<Icon path={mdiLogout} size={1} />
+				</div>
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -118,10 +120,6 @@ export const Header = () => {
 									<Icon path={mdiMagnify} size={1} />
 								</button>
 							</form>
-						</div>
-
-						<div className="nav-item logOut" onClick={handleLogout}>
-							<Icon path={mdiLogout} size={1} />
 						</div>
 					</div>
 				</div>
