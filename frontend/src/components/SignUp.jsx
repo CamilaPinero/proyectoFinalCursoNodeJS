@@ -73,6 +73,8 @@ export const SignUp = () => {
 									id="password"
 									className="form-control"
 									placeholder="Ingresa una contraseña"
+									minLength="3"
+									maxLength="8"
 									required
 								></input>
 							</div>

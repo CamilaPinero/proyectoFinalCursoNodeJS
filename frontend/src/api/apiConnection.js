@@ -24,13 +24,14 @@ export const connectionData = async (options) => {
 		);
 
 		if (!response.ok) {
-			throw new Error("error!");
+			throw new Error(response.status);
 		}
 
 		const data = await response.json();
 		return data;
 	} catch (error) {
-		console.error("Hubo el siguiente error: ", error);
-		// TODO: si la respuesta es 403 redireccionar al log in
+		if (error.message == 403) {
+			document.location.href = "/";
+		}
 	}
 };

@@ -123,7 +123,6 @@ export const Header = () => {
 						<div className="nav-item logOut" onClick={handleLogout}>
 							<Icon path={mdiLogout} size={1} />
 						</div>
-						{/* TODO: delete token, redirect login */}
 					</div>
 				</div>
 			</div>

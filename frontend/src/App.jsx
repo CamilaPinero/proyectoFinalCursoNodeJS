@@ -61,6 +61,10 @@ function App() {
 						></Route>
 						<Route path="/sign-up" element={<SignUp />}></Route>
 						<Route path="/log-in" element={<LogIn />}></Route>
+						<Route
+							path="*"
+							element={<Navigate to="/sign-up" />}
+						></Route>
 					</Routes>
 				)}
 			</Router>
