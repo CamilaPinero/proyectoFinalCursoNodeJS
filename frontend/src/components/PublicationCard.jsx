@@ -16,13 +16,6 @@ export const PublicationCard = (props) => {
 
 				<div className="card-body">
 					<p className="card-text">{props.pub.description}</p>
-					<a
-						onClick={() =>
-							navigate(`/publication/${props.pub._id}`)
-						}
-					>
-						ver mas
-					</a>
 					<img src={props.pub.image} className="card-img"></img>
 					<button
 						className="btn btn-primary"

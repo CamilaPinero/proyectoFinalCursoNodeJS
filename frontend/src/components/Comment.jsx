@@ -109,6 +109,8 @@ export const Comment = (props) => {
 Comment.PropTypes = {
 	content: PropTypes.string.isRequired,
 	setContent: PropTypes.func.isRequired,
+	selectedComment: PropTypes.string.isRequired,
+	setSelectedComment: PropTypes.func.isRequired,
 	loadPublication: PropTypes.func.isRequired,
 	pub: PropTypes.any.isRequired,
 	com: PropTypes.any.isRequired,

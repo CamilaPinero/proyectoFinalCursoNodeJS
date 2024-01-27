@@ -83,7 +83,7 @@ export const NewPublication = () => {
 						onChange={(e) => setImageUrl(e.target.value)}
 						data-toggle="tooltip"
 						data-placement="right"
-						title='Buscá "gatos" en google, abrí la imagen que te guste, copiá el link de la imagen y pegalo acá'
+						title="Copiá el link de una imagen de gatos que te guste y pegalo acá"
 					></input>
 				</div>
 				<button type="submit" className="btn btn-primary btn-crear">
