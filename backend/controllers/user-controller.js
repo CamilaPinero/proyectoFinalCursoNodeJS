@@ -34,8 +34,8 @@ const logIn = async (req, res) => {
 					expiresIn: "1h",
 				});
 				const userId = user._id;
-
-				return res.json({ token, userId });
+				const userName = user.user;
+				return res.json({ token, userId, userName });
 			} else {
 				//return res.json("contraseña incorrecta");
 				throw new Error("La contraseña ingresada es incorrecta");

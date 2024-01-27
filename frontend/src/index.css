@@ -19,7 +19,7 @@
 }
 
 a {
-	color: #646cff;
+	color: #747bff;
 	text-decoration: inherit;
 }
 a:hover {
@@ -39,7 +39,7 @@ h1 {
 
 .btn-sm {
 	margin-bottom: 0.5rem;
-	color: #646cff;
+	color: #747bff;
 }
 
 .btn-sm:hover {
@@ -47,7 +47,7 @@ h1 {
 }
 
 .btn-primary {
-	background-color: #646cff;
+	background-color: #747bff;
 }
 
 .btn-primary:hover {
@@ -91,4 +91,8 @@ li:hover {
 	background-color: #646cff;
 	color: #f8f8f8;
 	padding-left: 5px;
+}
+
+.btn-primary {
+	border: none;
 }

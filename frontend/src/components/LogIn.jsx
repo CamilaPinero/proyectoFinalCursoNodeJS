@@ -18,9 +18,11 @@ export const LogIn = () => {
 			if (response.token && response.userId) {
 				localStorage.setItem("token", response.token);
 				localStorage.setItem("userId", response.userId);
+				localStorage.setItem("user", response.userName);
 				navigate(0);
 			}
 		} catch (error) {
+			console.log(error);
 			toast.error(error.message);
 		}
 	}

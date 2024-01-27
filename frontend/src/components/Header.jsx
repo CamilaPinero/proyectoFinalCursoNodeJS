@@ -1,6 +1,6 @@
 import "../styles/header.css";
 import Icon from "@mdi/react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-color.png";
 import { mdiMenu, mdiMagnify, mdiClose, mdiLogout } from "@mdi/js";
 import { useNavigate } from "react-router-dom";
 import { fetchPublicationByKeyWord } from "../api/publications";
@@ -54,9 +54,7 @@ export const Header = () => {
 					className="logo"
 					onClick={() => navigate("/")}
 				/>
-				<div className="nav-item logOut" onClick={handleLogout}>
-					<Icon path={mdiLogout} size={1} />
-				</div>
+
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -73,21 +71,12 @@ export const Header = () => {
 					id="navbarNav"
 				>
 					<div className="navbar-nav">
-						{options.map((option) => (
-							<div
-								className="nav-item"
-								onClick={() => navigate(option.route)}
-								key={option.title}
-							>
-								{option.title}
-							</div>
-						))}
 						<div
 							className="search-form"
 							style={{ marginLeft: "10px" }}
 						>
 							<form
-								className="d-flex gap-2"
+								className="form gap-2"
 								role="search"
 								onSubmit={(e) =>
 									handleSearch(e, e.target.search.value)
@@ -120,6 +109,33 @@ export const Header = () => {
 									<Icon path={mdiMagnify} size={1} />
 								</button>
 							</form>
+						</div>
+						{options.map((option) => (
+							<div
+								className="nav-item"
+								onClick={() => navigate(option.route)}
+								key={option.title}
+							>
+								{option.title}
+							</div>
+						))}
+						<div className="user-control">
+							{/* <div className="userName">
+								{localStorage.getItem("user")}
+							</div> */}
+							<img
+								className="rounded-circle shadow-1-strong userAvatar"
+								src={`https://ui-avatars.com/api/?name=${localStorage.getItem(
+									"user"
+								)}&background=random`}
+								alt="avatar"
+							/>
+							<div
+								className="nav-item logOut"
+								onClick={handleLogout}
+							>
+								<Icon path={mdiLogout} size={1} />
+							</div>
 						</div>
 					</div>
 				</div>
