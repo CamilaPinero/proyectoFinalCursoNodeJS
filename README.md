@@ -1,4 +1,4 @@
-## Proyecto Final del Curso de NodeJS dictado por Codeki y Nación Servicios
+## Proyecto Final del Curso de NodeJS dictado por IT Patagonia y Codeki
 
 # Gatinstagram: un blog para compartir fotos de gatitos!
 
